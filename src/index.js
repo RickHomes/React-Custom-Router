@@ -1,22 +1,25 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Route } from "react-router-dom";
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
-}
+const CRouter = ({ routes: appRoutes }) => {
+  const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+    <Route
+      {...rest}
+      render={props => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  );
+  return appRoutes.map(route => (
+    <AppRoute
+      exact={route.exact}
+      key={route.comp}
+      path={route.path ? route.path : null}
+      component={route.comp}
+      layout={route.layout}
+    />
+  ));
+};
+export default CRouter;
