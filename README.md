@@ -37,7 +37,7 @@ export const appRoutes = [
   {
     exact: false,
     comp: AnotherPageComponent,
-    path: "/Sermons",
+    path: "/Page2",
     layout: EmptyLayout
   }
 ];
