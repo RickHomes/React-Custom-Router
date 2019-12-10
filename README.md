@@ -16,18 +16,16 @@ npm install --save c-router
 // App.js
 import React, { Component } from "react";
 import CRouter from "c-router";
-import {appRoutes} from "./Routes"
+import { appRoutes } from "./Routes";
 class App extends Component {
   render() {
     return <CRouter routes={appRoutes} />;
   }
 }
-ReactDOM.render(<App />, document.getElementById('root'))
-
-
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // Routes.js
-import { Home, AboutUs} from "./pages";
+import { Home, AboutUs } from "./pages";
 import { DefaultLayout, EmptyLayout } from "../layouts";
 
 export const appRoutes = [
@@ -40,7 +38,7 @@ export const appRoutes = [
   {
     exact: false,
     comp: AboutUs,
-    path: "/Page2",
+    path: "/AboutUs",
     layout: EmptyLayout
   }
 ];
@@ -49,7 +47,7 @@ export const appRoutes = [
 
 // EmptyLayout.js
 import React from "react";
-import AppBar from "./AppBar"
+import AppBar from "./AppBar";
 
 export default function EmptyLayout({ children }) {
   return (
@@ -66,7 +64,7 @@ import React from "react";
 export default function DefaultLayout({ children }) {
   return (
     <div>
-    <AppBar/>
+      <AppBar />
       {children}
     </div>
   );
@@ -81,7 +79,7 @@ import React from "react";
 export default function HomePage() {
   return (
     <div>
-    <p>Welcome to CRoute HomePage<p/>
+      <p>Welcome to CRoute HomePage</p>
     </div>
   );
 }
@@ -91,12 +89,10 @@ import React from "react";
 export default function AboutUs() {
   return (
     <div>
-    <p>About us page<p/>
+      <p>About us page</p>
     </div>
   );
 }
-
-
 ```
 
 ## License
