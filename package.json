@@ -1,6 +1,6 @@
 {
   "name": "c-router",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "custom react router-accepts layouts and components",
   "author": "homericks",
   "license": "MIT",
