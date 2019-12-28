@@ -15,15 +15,27 @@ const CRouter = ({ routes: appRoutes, auth: requireAuth }) => {
   return (
     <BrowserRouter>
       <Switch>
-        {appRoutes.map(route => (
-          <AppRoute
-            exact={route.exact}
-            key={route.comp}
-            path={route.path ? route.path : null}
-            component={route.private ? requireAuth(route.comp) : route.comp}
-            layout={route.layout}
-          />
-        ))}
+        {appRoutes.map(route =>
+          route.private ? (
+            requireAuth(
+              <AppRoute
+                exact={route.exact}
+                key={route.comp}
+                path={route.path ? route.path : null}
+                component={route.comp}
+                layout={route.layout}
+              />
+            )
+          ) : (
+            <AppRoute
+              exact={route.exact}
+              key={route.comp}
+              path={route.path ? route.path : null}
+              component={route.comp}
+              layout={route.layout}
+            />
+          )
+        )}
       </Switch>
     </BrowserRouter>
   );
