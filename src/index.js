@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+
 const CRouter = ({ routes: appRoutes, auth: requireAuth }) => {
   const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
     <Route
@@ -19,7 +20,7 @@ const CRouter = ({ routes: appRoutes, auth: requireAuth }) => {
             exact={route.exact}
             key={route.comp}
             path={route.path ? route.path : null}
-            component={requireAuth(route.comp)}
+            component={route.private ? requireAuth(route.comp) : route.comp}
             layout={route.layout}
           />
         ))}
