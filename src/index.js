@@ -15,38 +15,33 @@ const CRouter = ({ routes: appRoutes, auth: requireAuth }) => {
   return (
     <BrowserRouter>
       <Switch>
-        {appRoutes.map(route => {
-          return requireAuth(
-            route.private === true ? (
-              <AppRoute
-                exact={route.exact}
-                key={route.comp}
-                path={route.path ? route.path : null}
-                component={route.comp}
-                layout={route.layout}
-              />
-            ) : null
-          );
-
-          // route.private === false ? (
-          //   <AppRoute
-          //     exact={route.exact}
-          //     key={route.comp}
-          //     path={route.path ? route.path : null}
-          //     component={route.comp}
-          //     layout={route.layout}
-          //   />
-          // ) : null,
-          // route.notFound === true ? (
-          //   <AppRoute
-          //     exact={route.exact}
-          //     key={route.comp}
-          //     path={route.path ? route.path : null}
-          //     component={route.comp}
-          //     layout={route.layout}
-          //   />
-          // ) : null
-        })}
+        {appRoutes.map(route =>
+          route.private ? (
+            <AppRoute
+              exact={route.exact}
+              key={route.comp}
+              path={route.path ? route.path : null}
+              component={route.comp}
+              layout={route.layout}
+            />
+          ) : route.notFound ? (
+            <AppRoute
+              exact={route.exact}
+              key={route.comp}
+              path={route.path ? route.path : null}
+              component={route.comp}
+              layout={route.layout}
+            />
+          ) : route.private === false ? (
+            <AppRoute
+              exact={route.exact}
+              key={route.comp}
+              path={route.path ? route.path : null}
+              component={route.comp}
+              layout={route.layout}
+            />
+          ) : null
+        )}
       </Switch>
     </BrowserRouter>
   );
