@@ -17,13 +17,15 @@ const CRouter = ({ routes: appRoutes, auth: requireAuth }) => {
       <Switch>
         {appRoutes.map(route =>
           route.private ? (
-            <AppRoute
-              exact={route.exact}
-              key={route.comp}
-              path={route.path ? route.path : null}
-              component={route.comp}
-              layout={route.layout}
-            />
+            requireAuth(
+              <AppRoute
+                exact={route.exact}
+                key={route.comp}
+                path={route.path ? route.path : null}
+                component={route.comp}
+                layout={route.layout}
+              />
+            )
           ) : route.notFound ? (
             <AppRoute
               exact={route.exact}
